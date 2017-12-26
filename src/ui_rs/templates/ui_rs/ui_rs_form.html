@@ -1,0 +1,54 @@
+{% extends "director/fields.html" %}
+{% load static %}
+{% load jsonify %}
+
+{% block extra_head %}
+
+<script type="text/html" id="rs-list-template">
+    <div>
+        <div v-for="(url,key) in urls">
+            <select name="" id="" v-model="url.type">
+                <option value="PNG">PNG</option>
+                <option value="JPG">JPG</option>
+                <option value="PSD">PSD</option>
+            </select>
+            <input type="text" v-model="url.url"/>
+            <button @click="remove(key)">-</button>
+        </div>
+
+        <button @click="add()">+</button>
+    </div>
+</script>
+
+<script>
+    ex.each(heads,function(head){
+        if(head.name=='rs_dl_urls'){
+            head.type='rs-list'
+        }else if(head.name=='rs_show'){
+            head.type='picture'
+        }
+    })
+
+    var html =$('#item-template').html()
+    Vue.component('rs-list',{
+        props:['name','row','kw'],
+        template:"#rs-list-template",
+        data:function(){
+            this.row[this.name]  = this.row[this.name] || []
+            return {
+                urls:this.row[this.name]
+            }
+        },
+        methods:{
+            add:function(){
+                this.urls.push({type:'PNG',url:''})
+            },
+            remove:function(key){
+                this.urls.splice(key,1)
+            }
+        }
+
+    })
+</script>
+
+{% endblock %}

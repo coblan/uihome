@@ -1,0 +1,20 @@
+{% extends "director/table.html" %}
+{% load static %}
+{% load jsonify %}
+
+{% block extra_head %}
+
+<script>
+    Vue.component('show-pic',{
+        props:['name','row'],
+        template:'<span><img :src="row[name]" style="width: 300px" alt=""/></span>'
+    })
+
+    ex.each(heads,function(head){
+        if(head.name=='rs_show'){
+            head.type='show-pic'
+        }
+    })
+</script>
+
+{% endblock %}
