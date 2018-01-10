@@ -1,0 +1,37 @@
+{% extends "ui_rs/base.html" %}
+{% load static %}
+{% load jsonify %}
+
+{% block page_content %}
+
+<script>
+    Vue.component('rs-show',{
+        template:"<div><img :src='row.rs_show' alt='' style='width: 300px'/></div>",
+        props:['row']
+    })
+    $(function(){
+
+        $('title').text('fuck')
+
+        new Vue({
+            el:'#there',
+            data:{
+                rs_rows:[]
+            },
+            mounted:function(){
+                var self=this
+                var post_data=[{fun:'get_rs_list'}]
+                ex.post('/_ajax/ui_rs',JSON.stringify(post_data),function(resp){
+                    self.rs_rows=resp.get_rs_list
+                })
+            }
+        })
+    })
+
+</script>
+
+<div id="there">
+    <rs-show v-for="row in rs_rows" :row="row"></rs-show>
+</div>
+
+{% endblock %}

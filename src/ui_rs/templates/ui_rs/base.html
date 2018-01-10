@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{% load static %}
+{% load jsonify %}
+<head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <script src="{% static 'lib/jquery3.2.1.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'lib/font-awesome4.7/font-awesome4.7.min.css' %}">
+    <script src="{% static 'lib/vue2.3.2.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'lib/bootstrap.min.css' %}">
+    <script src="{% static 'lib/bootstrap.min.js' %}"></script>
+    <script src="{% static 'lib/moment2.17.1.min.js' %}"></script>
+
+    <script src='{% static "js/i18n.js?t=" %}{{ js_stamp.i18n_js }}'></script>
+    <script src='{% static "js/exfun.js?t=" %}{{ js_stamp.exfun_js }}'></script>
+    <script src='{% static "js/uis.pack.js?t=" %}{{ js_stamp.uis_pack_js }}'></script>
+    <script src='{% static "js/fields.pack.js?t=" %}{{ js_stamp.fields_pack_js }}'></script>
+    <title></title>
+</head>
+
+
+<script type="text/javascript">
+    Vue.config.devtools = true
+
+    var search_args = ex.parseSearch()
+    $(function () {
+
+//        new Vue({
+//            el:'#head',
+//            data:{
+//                search_args:search_args
+//            }
+//        })
+
+//        frame=new Vue({
+//            el:'#menu',
+//            data:{
+//                menu:menu,
+//                search_args:search_args
+//            }
+//        })
+
+//        new Vue({
+//            el:'#footer',
+//            data:{
+//                search_args:search_args
+//            }
+//        })
+
+    })
+
+</script>
+
+
+<body >
+<div>
+    <a href="/pc/ui_rs">管理界面</a>
+</div>
+
+<div id='content' >
+    {% block page_content %}
+
+    {% endblock %}
+</div>
+
+
+
+<script type="text/javascript">
+
+</script>
+
+<style type="text/css" media="screen" id="test">
+
+
+</style>
+</body>
+</html>

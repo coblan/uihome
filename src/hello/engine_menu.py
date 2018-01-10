@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from helpers.director.engine import BaseEngine,page,fa,page_dc
 
 class PcMenu(BaseEngine):
-    url_name='zhaoxiang'
+    url_name='uihome'
     menu=[
         # {'label':'监督员','url':page('inspector.inspector'),'icon':fa('fa-user-secret'),
          # 'submenu':[

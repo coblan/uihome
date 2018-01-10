@@ -21,6 +21,8 @@ from helpers.director import login_url
 from helpers.director import views as director_views
 from helpers.face import urls as face_urls
 
+import ui_rs.views as ui_rs_views
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/',include(login_url)),
@@ -30,7 +32,11 @@ urlpatterns = [
     url(r'^_ajax/(?P<app>\w+)?/?$',director_views.ajax_views,name='ajax_url'),
     url(r'^_ajax/?$',director_views.ajax_views), 
     url(r'^_face/', include(face_urls)),
-    url(r'^_download/(?P<app>\w+)?/?$',director_views.donwload_views,name='download_url'),      
+    url(r'^_download/(?P<app>\w+)?/?$',director_views.donwload_views,name='download_url'),     
+    
+    url(r'^$',ui_rs_views.mainpage),
+    
+    
 ]
 
 
